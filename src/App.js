@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import IssueTable from './components/IssueTable';
 import Issues from './components/Issues';
 
 class App extends Component {
@@ -27,6 +26,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
+        <h1>Create React App Issue Board</h1>
         <Issues issues={this.state.issues} />
       </div>
     );
