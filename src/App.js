@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Issues from './components/Issues';
+import Issue from './components/Issue';
 
 class App extends Component {
   state = {
-    issues: []
+    issues: [],
+    issue: {}
   };
 
   async componentDidMount() {
@@ -25,7 +27,7 @@ class App extends Component {
   }
 
   render() {
-    const { issues } = this.state;
+    const { issues, issue } = this.state;
 
     return (
       <Router>
@@ -39,6 +41,13 @@ class App extends Component {
             />
           </div>
         </Switch>
+        <Route
+          exact
+          path='/issue/:number'
+          render={props => (
+            <Issue {...props} getIssue={this.getIssue} issue={issue} />
+          )}
+        />
       </Router>
     );
   }
