@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Issues from './components/Issues';
 
@@ -24,11 +25,21 @@ class App extends Component {
   }
 
   render() {
+    const { issues } = this.state;
+
     return (
-      <div className='App'>
-        <h1>Create React App Issue Board</h1>
-        <Issues issues={this.state.issues} />
-      </div>
+      <Router>
+        <Switch>
+          <div className='App'>
+            <h1>Create React App Issue Board</h1>
+            <Route
+              exact
+              path='/'
+              render={props => <Issues issues={issues} />}
+            />
+          </div>
+        </Switch>
+      </Router>
     );
   }
 }

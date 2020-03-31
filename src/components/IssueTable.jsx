@@ -19,7 +19,7 @@ const IssueTable = ({ issue: { url, title, body, user } }) => {
         <br />
         <strong>
           Problem: <br /> <br />
-        </strong>{' '}
+        </strong>
         {body}
       </p>
       <hr />
