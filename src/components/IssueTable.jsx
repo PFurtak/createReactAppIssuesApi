@@ -1,30 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const IssueTable = ({ issue: { url, title, body, user } }) => {
+const IssueTable = ({ issue: { title, user, number } }) => {
   return (
     <div>
-      <a href={url}>
-        <h3>
-          <strong>
-            <br />
-            {title}
-          </strong>
-        </h3>
-      </a>
-      <h4>
-        Submitted by: <a href={user.url}>{user.login}</a>
-      </h4>
-
-      <p>
-        <br />
+      <h3>
         <strong>
-          Problem: <br /> <br />
+          <br />
+          <Link to={`/issues/${number}`}>{title}</Link>
         </strong>
-        {body}
-      </p>
+      </h3>
+      <h4>Submitted by: {user.login}</h4>
       <hr />
     </div>
   );
+};
+IssueTable.propTypes = {
+  issue: PropTypes.object.isRequired
 };
 
 export default IssueTable;

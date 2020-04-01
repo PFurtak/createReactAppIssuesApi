@@ -26,6 +26,19 @@ class App extends Component {
     }
   }
 
+  getIssue = async number => {
+    try {
+      const res = await fetch(
+        `https://api.github.com/repos/facebook/create-react-app/issues/${number}`
+      );
+      console.log('response is:', res);
+      const data = res.json();
+      this.setState({ issue: data });
+    } catch (error) {
+      this.setState({ data: error.message });
+    }
+  };
+
   render() {
     const { issues, issue } = this.state;
 
