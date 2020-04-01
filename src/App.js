@@ -56,7 +56,7 @@ class App extends Component {
         </Switch>
         <Route
           exact
-          path='/issue/:number'
+          path='/issues/:number'
           render={props => (
             <Issue {...props} getIssue={this.getIssue} issue={issue} />
           )}
